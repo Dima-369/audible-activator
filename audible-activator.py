@@ -8,6 +8,7 @@ import common
 import hashlib
 import binascii
 import requests
+from selenium.webdriver.common.by import By
 from getpass import getpass
 from selenium import webdriver
 from optparse import OptionParser
@@ -99,9 +100,9 @@ def fetch_activation_bytes(username, password, options):
         print("[!] Running in DEBUG mode. You will need to login in a semi-automatic way, wait for the login screen to show up ;)")
         time.sleep(32)
     else:
-        search_box = driver.find_element_by_id('ap_email')
+        search_box = driver.find_element(By.ID, 'ap_email')
         search_box.send_keys(username)
-        search_box = driver.find_element_by_id('ap_password')
+        search_box = driver.find_element(By.ID, 'ap_password')
         search_box.send_keys(password)
         search_box.submit()
         time.sleep(2)  # give the page some time to load
